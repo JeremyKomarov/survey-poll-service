@@ -4,11 +4,12 @@ import com.pollService.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class VoteController {
-
     @Autowired
-    VoteService voteService;
+    private VoteService voteService;
 
     @PostMapping(value = "/vote/create")
     public void createVote(@RequestBody Vote vote){
@@ -30,4 +31,11 @@ public class VoteController {
     public void deleteVoteById(@PathVariable Long id){
         voteService.deleteVoteById(id);
     }
+
+    @GetMapping(value = "/vote/{questionId}/count")
+    public List<Long> getQuestionCountByQuestionId(@PathVariable Long questionId){
+        return voteService.getQuestionCountByQuestionId(questionId);
+    }
+
+
 }

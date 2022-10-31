@@ -7,6 +7,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class VoteRepositoryImpl implements VoteRepository {
 
@@ -42,6 +44,17 @@ public class VoteRepositoryImpl implements VoteRepository {
     public void deleteVoteById(Long id) {
         String sql = "DELETE FROM " + VOTE_TABLE_NAME + " WHERE id = ?";
         jdbcTemplate.update(sql,id);
+    }
+
+
+    @Override
+    public List<Long> getQuestionCountByQuestionId(Long questionId){
+        String sql = "SELECT COUNT(answer_id) FROM " + VOTE_TABLE_NAME + " WHERE question_id = ?";
+        try {
+            return jdbcTemplate.queryForList(sql, Long.class, questionId);
+        } catch (EmptyResultDataAccessException error){
+            return null;
+        }
     }
 
 

@@ -21,9 +21,11 @@ CREATE TABLE vote (
     user_id INT(11),
     question_id INT(11),
     answer_id INT(11),
-    PRIMARY KEY (id),
+
+    PRIMARY KEY (id ),
     FOREIGN KEY (question_id) REFERENCES question(id),
     FOREIGN KEY (answer_id) REFERENCES answer(id)
+
 );
 
 INSERT INTO question (question) VALUES
@@ -39,6 +41,13 @@ INSERT INTO answer (question_id, answer) VALUES
  (2, 'France'),
  (2, 'South America'),
  (2, 'Thailand');
+
+ INSERT INTO vote (user_id, question_id, answer_id) VALUES
+  (1, 1, 2),
+  (2, 1, 3),
+  (3, 1, 2),
+  (4, 2, 5);
+
 
 
 
