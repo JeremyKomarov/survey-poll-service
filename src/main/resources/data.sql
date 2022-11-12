@@ -3,24 +3,24 @@ DROP TABLE IF EXISTS answer;
 DROP TABLE IF EXISTS vote;
 
 CREATE TABLE question (
-    id INT(11) unsigned NOT NULL AUTO_INCREMENT,
+    id INT unsigned NOT NULL AUTO_INCREMENT,
     question varchar(300),
     PRIMARY KEY (id)
 );
 
 CREATE TABLE answer (
-    id INT(11) unsigned NOT NULL AUTO_INCREMENT,
-    question_id INT(11),
+    id INT unsigned NOT NULL AUTO_INCREMENT,
+    question_id INT,
     answer VARCHAR(200),
     PRIMARY KEY (id),
     FOREIGN KEY (question_id) REFERENCES question(id)
 );
 
 CREATE TABLE vote (
-    id INT(11) unsigned NOT NULL AUTO_INCREMENT,
-    user_id INT(11),
-    question_id INT(11),
-    answer_id INT(11),
+    id INT unsigned NOT NULL AUTO_INCREMENT,
+    user_id INT,
+    question_id INT,
+    answer_id INT,
 
     PRIMARY KEY (id ),
     FOREIGN KEY (question_id) REFERENCES question(id),
