@@ -25,7 +25,6 @@ CREATE TABLE vote (
     PRIMARY KEY (id ),
     FOREIGN KEY (question_id) REFERENCES question(id),
     FOREIGN KEY (answer_id) REFERENCES answer(id)
-
 );
 
 INSERT INTO question (question) VALUES
