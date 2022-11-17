@@ -12,7 +12,7 @@ public class VoteController {
     private VoteService voteService;
 
     @PostMapping(value = "/vote/create")
-    public void createVote(@RequestBody Vote vote){
+    public void createVote(@RequestBody Vote vote) throws Exception {
         voteService.createVote(vote);
     }
 
@@ -32,10 +32,8 @@ public class VoteController {
         voteService.deleteVoteById(id);
     }
 
-    @GetMapping(value = "/vote/{questionId}/count")
-    public List<Long> getQuestionCountByQuestionId(@PathVariable Long questionId){
-        return voteService.getQuestionCountByQuestionId(questionId);
+    @DeleteMapping(value = "/vote/deleteVotesByUserId/{userId}")
+    public void deleteVoteByUserId(@PathVariable Long userId){
+        voteService.deleteAllVotesByUserId(userId);
     }
-
-
 }

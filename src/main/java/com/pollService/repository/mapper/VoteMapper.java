@@ -12,6 +12,7 @@ public class VoteMapper implements RowMapper<Vote> {
     public Vote mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new Vote(
                 rs.getLong("id"),
+                rs.getLong("userId"),
                 rs.getLong("questionId"),
                 rs.getLong("answerId")
         );

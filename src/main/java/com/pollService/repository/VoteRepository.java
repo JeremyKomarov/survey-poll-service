@@ -1,6 +1,6 @@
 package com.pollService.repository;
 
-import com.pollService.model.Vote;
+import com.pollService.model.*;
 
 import java.util.List;
 
@@ -9,6 +9,10 @@ public interface VoteRepository {
     Vote getVoteById(Long id);
     void updateVoteById(Long id, Vote vote);
     void deleteVoteById(Long id);
-    List<Long> getQuestionCountByQuestionId(Long questionId);
-
+    void deleteAllVotesByUserId(Long userId);
+    List<QuestionAnswerCountResponse> getTotalAnsweredQuestionCountByQuestionId(Long questionId);
+    QuestionCountResponse getTotalChosenQuestionByQuestionId(Long questionId);
+    List<QuestionAnswerResponse> getUserQuestionOptionsByUserId(Long userId);
+    UserIdQuestionResponse getTotalUserQuestionsCount(Long userId);
+    List<QuestionAnswerCountResponse> getAllQuestionAnswers();
 }
