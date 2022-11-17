@@ -10,10 +10,10 @@ CREATE TABLE question (
 
 CREATE TABLE answer (
     id INT unsigned NOT NULL AUTO_INCREMENT,
-    question_id INT,
+    q_id INT,
     answer VARCHAR(200),
     PRIMARY KEY (id),
-    FOREIGN KEY (question_id) REFERENCES question(id)
+    FOREIGN KEY (q_id) REFERENCES question(id)
 );
 
 CREATE TABLE vote (
@@ -31,7 +31,7 @@ INSERT INTO question (question) VALUES
  ('Between the following, what do you most love to do?'),
  ('Where is your preferred place to travel?');
 
-INSERT INTO answer (question_id, answer) VALUES
+INSERT INTO answer (q_id, answer) VALUES
  (1, 'Watch TV'),
  (1, 'Play the computer'),
  (1, 'Hanging out with friends'),
@@ -44,8 +44,10 @@ INSERT INTO answer (question_id, answer) VALUES
  INSERT INTO vote (user_id, question_id, answer_id) VALUES
   (1, 1, 2),
   (2, 1, 3),
-  (3, 1, 2),
-  (4, 2, 5);
+  (1, 1, 1),
+  (2, 2, 1),
+  (1, 2, 1),
+
 
 
 

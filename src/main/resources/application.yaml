@@ -12,3 +12,7 @@ spring:
   h2:
     console:
       enabled: true
+
+internalApi:
+  userApi:
+    url: http://localhost:8080

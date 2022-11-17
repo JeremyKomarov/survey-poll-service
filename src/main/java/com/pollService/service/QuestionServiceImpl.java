@@ -31,4 +31,11 @@ public class QuestionServiceImpl implements QuestionService {
     public void deleteQuestionById(Long id) {
         questionRepository.deleteQuestionById(id);
     }
+
+    @Override
+    public QuestionFullAnswersResponse getFullQuestionAndAnswersByQuestionId(Long questionId) {
+        return questionRepository.getFullQuestionAndAnswersByQuestionId(questionId);
+    }
+
+
 }

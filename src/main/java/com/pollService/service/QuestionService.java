@@ -7,4 +7,6 @@ public interface QuestionService {
     Question getQuestionById(Long id);
     void updateQuestionById(Long id, Question question);
     void deleteQuestionById(Long id);
+    QuestionFullAnswersResponse getFullQuestionAndAnswersByQuestionId(Long questionId);
+
 }
