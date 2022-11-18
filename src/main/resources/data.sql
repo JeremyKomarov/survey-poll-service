@@ -43,10 +43,12 @@ INSERT INTO answer (q_id, answer) VALUES
 
  INSERT INTO vote (user_id, question_id, answer_id) VALUES
   (1, 1, 2),
-  (2, 1, 3),
-  (1, 1, 1),
-  (2, 2, 1),
   (1, 2, 1),
+  (2, 1, 3),
+  (3, 1, 1),
+
+
+
 
 
 
