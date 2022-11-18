@@ -4,13 +4,13 @@ DROP TABLE IF EXISTS vote;
 
 CREATE TABLE question (
     id INT unsigned NOT NULL AUTO_INCREMENT,
-    question varchar(300),
+    question varchar(300) NOT NULL,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE answer (
     id INT unsigned NOT NULL AUTO_INCREMENT,
-    q_id INT,
+    q_id INT NOT NULL,
     answer VARCHAR(200),
     PRIMARY KEY (id),
     FOREIGN KEY (q_id) REFERENCES question(id)
@@ -18,9 +18,9 @@ CREATE TABLE answer (
 
 CREATE TABLE vote (
     id INT unsigned NOT NULL AUTO_INCREMENT,
-    user_id INT,
-    question_id INT,
-    answer_id INT,
+    user_id INT NOT NULL,
+    question_id INT NOT NULL,
+    answer_id INT NOT NULL,
 
     PRIMARY KEY (id ),
     FOREIGN KEY (question_id) REFERENCES question(id),

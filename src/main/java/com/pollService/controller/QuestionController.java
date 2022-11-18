@@ -1,5 +1,6 @@
 package com.pollService.controller;
 import com.pollService.model.Question;
+import com.pollService.model.QuestionRequest;
 import com.pollService.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class QuestionController {
 
     @PutMapping(value = "/question/{id}/update")
     public void updateQuestionById(@PathVariable Long id,
-                               @RequestBody Question question){
+                                   @RequestBody Question question){
         questionService.updateQuestionById(id, question);
     }
 
@@ -30,5 +31,11 @@ public class QuestionController {
     public void deleteQuestionById(@PathVariable Long id){
         questionService.deleteQuestionById(id);
     }
+
+    @PostMapping(value = "/question/createFullQuestionAnswers")
+    public void createFullQuestionAnswers(@RequestBody QuestionRequest questionRequest){
+        questionService.createFullQuestionAnswers(questionRequest);
+
+    };
 }
 

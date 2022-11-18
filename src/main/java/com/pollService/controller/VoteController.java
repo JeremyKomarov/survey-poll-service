@@ -4,10 +4,9 @@ import com.pollService.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 public class VoteController {
+
     @Autowired
     private VoteService voteService;
 

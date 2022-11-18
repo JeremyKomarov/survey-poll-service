@@ -17,9 +17,10 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 
 
     @Override
-    public void createQuestion(Question question) {
+    public Long createQuestion(Question question) {
         String sql = "INSERT INTO " + QUESTIONS_TABLE_NAME + " (question) VALUES (?)";
         jdbcTemplate.update(sql, question.getQuestionContent());
+        return jdbcTemplate.queryForObject("SELECT LAST_INSERT_ID();", Long.class);
     }
 
     @Override

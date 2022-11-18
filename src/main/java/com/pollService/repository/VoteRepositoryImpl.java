@@ -22,7 +22,6 @@ public class VoteRepositoryImpl implements VoteRepository {
         jdbcTemplate.update(sql,vote.getUserId(), vote.getQuestionId(), vote.getAnswerId());
     }
 
-
     @Override
     public Vote getVoteById(Long id) {
         String sql = "SELECT * FROM " + VOTE_TABLE_NAME + " WHERE id=?";

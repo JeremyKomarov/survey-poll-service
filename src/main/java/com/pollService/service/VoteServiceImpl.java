@@ -28,8 +28,6 @@ public class VoteServiceImpl implements VoteService{
         }else {
             throw new Exception("The user is not registered, Please register to vote");
         }
-
-
     };
 
     @Override

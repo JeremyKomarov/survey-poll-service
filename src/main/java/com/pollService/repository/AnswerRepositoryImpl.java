@@ -17,7 +17,7 @@ public class AnswerRepositoryImpl implements AnswerRepository {
 
     @Override
     public void createAnswer(Answer answer) {
-        String sql = "INSERT INTO " + ANSWER_TABLE_NAME + " (question_id, answer) VALUES (?, ?)";
+        String sql = "INSERT INTO " + ANSWER_TABLE_NAME + " (q_id, answer) VALUES (?, ?)";
         jdbcTemplate.update(sql, answer.getQuestionId(), answer.getAnswerContent());
     }
 
@@ -33,7 +33,7 @@ public class AnswerRepositoryImpl implements AnswerRepository {
 
     @Override
     public void updateAnswerById(Long id, Answer answer) {
-        String sql = "UPDATE " + ANSWER_TABLE_NAME + " SET question_id=?, answer=? " + "WHERE id=?";
+        String sql = "UPDATE " + ANSWER_TABLE_NAME + " SET q_id=?, answer=? " + "WHERE id=?";
         jdbcTemplate.update(sql, answer.getQuestionId(),answer.getAnswerContent(), id);
     }
 

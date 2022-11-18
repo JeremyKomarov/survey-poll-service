@@ -12,7 +12,7 @@ public class AnswerMapper implements RowMapper<Answer> {
     public Answer mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new Answer(
                 rs.getLong("id"),
-                rs.getLong("question_id"),
+                rs.getLong("q_id"),
                 rs.getString("answer")
         );
     }
