@@ -7,7 +7,8 @@ public interface QuestionService {
     void createQuestion(Question question);
     Question getQuestionById(Long id) throws Exception;
     void updateQuestionById(Long id, Question question) throws Exception;
-    void deleteQuestionById(Long id);
+    void deleteQuestionById(Long id) throws Exception;
     void createFullQuestionAnswers(QuestionRequest questionRequest) throws Exception;
+    void deleteFullQuestionAnswers(Long id);
 
 }

@@ -28,7 +28,7 @@ public class QuestionController {
     }
 
     @DeleteMapping(value = "/question/{id}/delete")
-    public void deleteQuestionById(@PathVariable Long id){
+    public void deleteQuestionById(@PathVariable Long id) throws Exception {
         questionService.deleteQuestionById(id);
     }
 
@@ -36,6 +36,11 @@ public class QuestionController {
     public void createFullQuestionAnswers(@RequestBody QuestionRequest questionRequest) throws Exception {
         questionService.createFullQuestionAnswers(questionRequest);
 
+    };
+
+    @DeleteMapping(value = "/question/{id}/deleteFullQuestionAnswers")
+    public void deleteFullQuestionAnswers(@PathVariable Long id){
+        questionService.deleteFullQuestionAnswers(id);
     };
 }
 

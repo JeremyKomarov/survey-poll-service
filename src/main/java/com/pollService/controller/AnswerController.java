@@ -4,6 +4,8 @@ import com.pollService.service.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class AnswerController {
     @Autowired
@@ -30,5 +32,14 @@ public class AnswerController {
         answerService.deleteAnswerById(id);
     }
 
+    @GetMapping(value = "/answer/{questionId}/byQuestionId")
+    public List<Answer> getAnswerByQuestionId (@PathVariable Long questionId) throws Exception {
+        return answerService.getAnswerByQuestionId(questionId);
+    };
+
+    @DeleteMapping(value = "/answer/{questionId}/byQuestionId")
+    public void deleteAnswersByQuestionId(@PathVariable Long questionId){
+        answerService.deleteAnswersByQuestionId(questionId);
+    }
 
 }

@@ -5,6 +5,8 @@ import com.pollService.repository.AnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AnswerServiceImpl implements AnswerService{
     @Autowired
@@ -61,7 +63,24 @@ public class AnswerServiceImpl implements AnswerService{
     public void deleteAnswerById(Long id) throws Exception {
             answerRepository.deleteAnswerById(id);
     }
+
+    @Override
+    public List<Answer> getAnswerByQuestionId(Long questionId) {
+        return  answerRepository.getAnswerByQuestionId(questionId);
+    }
+
+    @Override
+    public void deleteAnswersByQuestionId(Long questionId) {
+        answerRepository.deleteAnswersByQuestionId(questionId);
+    }
+
+    ;
+
+
+
+
 }
+
 
 
 

@@ -7,6 +7,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class AnswerRepositoryImpl implements AnswerRepository {
 
@@ -42,4 +44,22 @@ public class AnswerRepositoryImpl implements AnswerRepository {
         String sql = "DELETE FROM " + ANSWER_TABLE_NAME + " WHERE id = ?";
         jdbcTemplate.update(sql,id);
     }
+
+    @Override
+    public List<Answer> getAnswerByQuestionId(Long questionId) {
+        String sql = "SELECT * FROM " + ANSWER_TABLE_NAME + " WHERE q_id = ?";
+        try {
+            return jdbcTemplate.query(sql, new AnswerMapper(), questionId);
+        } catch (EmptyResultDataAccessException error){
+            return null;
+        }
+    }
+
+    @Override
+    public void deleteAnswersByQuestionId(Long questionId) {
+        String sql = "DELETE FROM " + ANSWER_TABLE_NAME + " WHERE q_id = ?";
+        jdbcTemplate.update(sql, questionId);
+    }
+
+
 }

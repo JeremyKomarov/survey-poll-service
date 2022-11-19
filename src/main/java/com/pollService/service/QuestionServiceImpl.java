@@ -47,8 +47,13 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public void deleteQuestionById(Long id) {
-        questionRepository.deleteQuestionById(id);
+    public void deleteQuestionById(Long id) throws Exception {
+        if (answerService.getAnswerByQuestionId(id) == null){
+            questionRepository.deleteQuestionById(id);
+        }else {
+            throw new Exception("cant delete question because it has answers");
+        }
+
     }
 
     @Override
@@ -60,5 +65,11 @@ public class QuestionServiceImpl implements QuestionService {
             String curAnswerContent = curAnswers.get(i).getAnswerContent();
             answerService.createAnswer(questionRequest.toAnswer(curQuestionId,curAnswerContent));
         }
+    }
+
+    @Override
+    public void deleteFullQuestionAnswers(Long id) {
+        answerService.deleteAnswersByQuestionId(id);
+        questionRepository.deleteQuestionById(id);
     }
 }
