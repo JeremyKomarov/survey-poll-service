@@ -2,7 +2,7 @@ package com.pollService.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pollService.model.Answer;
 import com.pollService.model.Question;
-import com.pollService.model.QuestionRequest;
+import com.pollService.model.request.QuestionRequest;
 import com.pollService.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,13 +24,26 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public Question getQuestionById(Long id) {
-        return questionRepository.getQuestionById(id);
+    public Question getQuestionById(Long id) throws Exception {
+        if (questionRepository.getQuestionById(id) != null)
+        {
+            return questionRepository.getQuestionById(id);
+        }else {
+            throw new Exception("No such question");
+        }
+
     }
 
     @Override
-    public void updateQuestionById(Long id, Question question) {
-        questionRepository.updateQuestionById(id, question);
+    public void updateQuestionById(Long id, Question question) throws Exception {
+        if (questionRepository.getQuestionById(id) != null)
+        {
+            questionRepository.updateQuestionById(id, question);
+        }
+        else {
+            throw new Exception("No such question to update");
+        }
+
     }
 
     @Override
@@ -39,7 +52,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public void createFullQuestionAnswers(QuestionRequest questionRequest) {
+    public void createFullQuestionAnswers(QuestionRequest questionRequest) throws Exception {
         Question curQuestion = questionRequest.getQuestion();
         Long curQuestionId = questionRepository.createQuestion(curQuestion);
         List<Answer> curAnswers = questionRequest.getAnswer();

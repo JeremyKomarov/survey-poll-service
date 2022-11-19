@@ -1,6 +1,10 @@
 package com.pollService.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pollService.model.*;
+import com.pollService.model.response.QuestionAnswerCountResponse;
+import com.pollService.model.response.QuestionAnswerResponse;
+import com.pollService.model.response.QuestionCountResponse;
+import com.pollService.model.response.UserIdQuestionResponse;
 import com.pollService.repository.VoteRepository;
 import com.pollService.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,18 +35,32 @@ public class VoteServiceImpl implements VoteService{
     };
 
     @Override
-    public Vote getVoteById(Long id){
-        return voteRepository.getVoteById(id);
+    public Vote getVoteById(Long id) throws Exception {
+        if (voteRepository.getVoteById(id) != null)
+        {
+            return voteRepository.getVoteById(id);
+        }else {
+            throw new Exception("No such vote");
+        }
     }
 
     @Override
-    public void updateVoteById(Long id, Vote vote) {
-        voteRepository.updateVoteById(id, vote);
+    public void updateVoteById(Long id, Vote vote) throws Exception {
+        if (voteRepository.getVoteById(id) != null)
+        {
+            voteRepository.updateVoteById(id, vote);
+        }else {
+            throw new Exception("No such vote to update");
+        }
     }
 
     @Override
-    public void deleteVoteById(Long id) {
-        voteRepository.deleteVoteById(id);
+    public void deleteVoteById(Long id) throws Exception {
+        if (voteRepository.getVoteById(id) != null){
+            voteRepository.deleteVoteById(id);
+        }else {
+            throw new Exception("No such Vote to delete");
+        }
     }
 
     @Override
@@ -75,6 +93,5 @@ public class VoteServiceImpl implements VoteService{
     public List<QuestionAnswerCountResponse> getAllQuestionAnswers() {
         return voteRepository.getAllQuestionAnswers();
     }
-
 
 }

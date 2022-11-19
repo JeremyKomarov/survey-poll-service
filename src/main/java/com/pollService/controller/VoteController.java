@@ -4,6 +4,8 @@ import com.pollService.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class VoteController {
 
@@ -16,18 +18,18 @@ public class VoteController {
     }
 
     @GetMapping(value = "/vote/{id}")
-    public Vote getVoteById(@PathVariable Long id){
+    public Vote getVoteById(@PathVariable Long id) throws Exception {
         return voteService.getVoteById(id);
     }
 
     @PutMapping(value = "/vote/{id}/update")
     public void updateVoteById(@PathVariable Long id,
-                                   @RequestBody Vote vote){
+                                   @RequestBody Vote vote) throws Exception {
         voteService.updateVoteById(id, vote);
     }
 
     @DeleteMapping(value = "/vote/{id}/delete")
-    public void deleteVoteById(@PathVariable Long id){
+    public void deleteVoteById(@PathVariable Long id) throws Exception {
         voteService.deleteVoteById(id);
     }
 
@@ -35,4 +37,5 @@ public class VoteController {
     public void deleteVoteByUserId(@PathVariable Long userId){
         voteService.deleteAllVotesByUserId(userId);
     }
+
 }

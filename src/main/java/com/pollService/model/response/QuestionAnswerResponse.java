@@ -1,4 +1,4 @@
-package com.pollService.model;
+package com.pollService.model.response;
 
 public class QuestionAnswerResponse {
     String question;

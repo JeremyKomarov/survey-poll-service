@@ -1,6 +1,10 @@
 package com.pollService.repository;
 
 import com.pollService.model.*;
+import com.pollService.model.response.QuestionAnswerCountResponse;
+import com.pollService.model.response.QuestionAnswerResponse;
+import com.pollService.model.response.QuestionCountResponse;
+import com.pollService.model.response.UserIdQuestionResponse;
 
 import java.util.List;
 

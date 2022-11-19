@@ -1,9 +1,9 @@
 package com.pollService.controller;
 
-import com.pollService.model.QuestionAnswerCountResponse;
-import com.pollService.model.QuestionAnswerResponse;
-import com.pollService.model.QuestionCountResponse;
-import com.pollService.model.UserIdQuestionResponse;
+import com.pollService.model.response.QuestionAnswerCountResponse;
+import com.pollService.model.response.QuestionAnswerResponse;
+import com.pollService.model.response.QuestionCountResponse;
+import com.pollService.model.response.UserIdQuestionResponse;
 import com.pollService.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

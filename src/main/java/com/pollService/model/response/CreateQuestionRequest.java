@@ -1,13 +1,17 @@
-package com.pollService.model;
+package com.pollService.model.response;
 
-public class CreateQuestionResponse {
+import com.pollService.model.Answer;
+import com.pollService.model.Question;
+
+public class CreateQuestionRequest {
+
     private Question question;
     private Answer answerA;
     private Answer answerB;
     private Answer answerC;
     private Answer answerD;
 
-    public CreateQuestionResponse(Question question, Answer answerA, Answer answerB, Answer answerC, Answer answerD) {
+    public CreateQuestionRequest(Question question, Answer answerA, Answer answerB, Answer answerC, Answer answerD) {
         this.question = question;
         this.answerA = answerA;
         this.answerB = answerB;
@@ -53,5 +57,20 @@ public class CreateQuestionResponse {
 
     public void setAnswerD(Answer answerD) {
         this.answerD = answerD;
+    }
+
+    public Question toQuestion(Question question) {
+        return new Question(
+                question.getId(),
+                question.getQuestionContent()
+        );
+    }
+
+    public Answer toAnswer(Answer answer, Question questionId ) {
+        return new Answer(
+                answer.getId(),
+                questionId.getId(),
+                answer.getAnswerContent()
+        );
     }
 }

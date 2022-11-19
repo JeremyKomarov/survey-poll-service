@@ -10,23 +10,23 @@ public class AnswerController {
     private AnswerService answerService;
 
     @PostMapping(value = "/answer/create")
-    public void createAnswer(@RequestBody Answer answer){
+    public void createAnswer(@RequestBody Answer answer) throws Exception {
         answerService.createAnswer(answer);
     }
 
     @GetMapping(value = "/answer/{id}")
-    public Answer getAnswerById(@PathVariable Long id){
+    public Answer getAnswerById(@PathVariable Long id) throws Exception {
         return answerService.getAnswerById(id);
     }
 
     @PutMapping(value = "/answer/{id}/update")
     public void updateAnswerById(@PathVariable Long id,
-                                 @RequestBody Answer answer){
+                                 @RequestBody Answer answer) throws Exception {
         answerService.updateAnswerById(id, answer);
     }
 
     @DeleteMapping(value = "/answer/{id}/delete")
-    public void deleteAnswerById(@PathVariable Long id){
+    public void deleteAnswerById(@PathVariable Long id) throws Exception {
         answerService.deleteAnswerById(id);
     }
 

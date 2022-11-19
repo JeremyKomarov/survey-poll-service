@@ -1,5 +1,9 @@
 package com.pollService.repository;
 import com.pollService.model.*;
+import com.pollService.model.response.QuestionAnswerCountResponse;
+import com.pollService.model.response.QuestionAnswerResponse;
+import com.pollService.model.response.QuestionCountResponse;
+import com.pollService.model.response.UserIdQuestionResponse;
 import com.pollService.repository.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -34,7 +38,7 @@ public class VoteRepositoryImpl implements VoteRepository {
 
     @Override
     public void updateVoteById(Long id, Vote vote) {
-        String sql = "UPDATE " + VOTE_TABLE_NAME + " SET user_id=? question_id=?, answer_id=? " + "WHERE id=?";
+        String sql = "UPDATE " + VOTE_TABLE_NAME + " SET user_id=?, question_id=?, answer_id=? " + "WHERE id=?";
         jdbcTemplate.update(sql,vote.getUserId(), vote.getQuestionId(),vote.getAnswerId(), id);
     }
 
@@ -78,8 +82,6 @@ public class VoteRepositoryImpl implements VoteRepository {
         String sql = "SELECT question.question, answer.answer, COUNT(answer) AS user_answered FROM " + VOTE_TABLE_NAME + " INNER JOIN question ON vote.question_id=question.id INNER JOIN answer ON vote.answer_id = answer.id GROUP BY question_id, answer ORDER BY question_id ASC";
         return jdbcTemplate.query(sql, new QuestionAnswerCountMapper());
     }
-
-
 }
 
 

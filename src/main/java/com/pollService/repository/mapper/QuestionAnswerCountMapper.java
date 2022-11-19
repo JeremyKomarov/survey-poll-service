@@ -1,7 +1,6 @@
 package com.pollService.repository.mapper;
 
-import com.pollService.model.QuestionAnswerCountResponse;
-import com.pollService.model.Vote;
+import com.pollService.model.response.QuestionAnswerCountResponse;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

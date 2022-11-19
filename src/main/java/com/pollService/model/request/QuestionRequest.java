@@ -1,4 +1,7 @@
-package com.pollService.model;
+package com.pollService.model.request;
+
+import com.pollService.model.Answer;
+import com.pollService.model.Question;
 
 import java.util.List;
 

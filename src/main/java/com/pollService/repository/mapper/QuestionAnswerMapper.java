@@ -1,6 +1,6 @@
 package com.pollService.repository.mapper;
 
-import com.pollService.model.QuestionAnswerResponse;
+import com.pollService.model.response.QuestionAnswerResponse;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
